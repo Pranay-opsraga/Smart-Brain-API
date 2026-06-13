@@ -32,7 +32,9 @@ app.use((req, res, next) => {
     }
     next();
 });
-app.use(helmet());                         // Security headers
+app.use(helmet({
+    crossOriginResourcePolicy: { policy: 'cross-origin' }
+}));                                       // Security headers
 
 app.use(morgan("dev"));                    // Request logging
 app.use(express.json({ limit: "1mb" }));   // JSON body parser with size limit
