@@ -44,6 +44,7 @@ Smart Brain API is the backend server powering the [Smart Brain](https://github.
 | Query Builder | Knex.js |
 | Auth / Security | bcryptjs, Helmet, CORS |
 | Logging | Morgan |
+| Config | dotenv |
 
 ---
 
@@ -266,8 +267,8 @@ Smart-Brain-API/
 
 | Command | Description |
 |---|---|
-| `npm start` | Start the server in production mode |
-| `npm run dev` | Start the server with auto-restart on file changes |
+| `npm run dev` | Kills any process on port 3001, then starts server with auto-restart |
+| `npm start` | Start the server in production mode (no auto-restart) |
 
 ---
 
