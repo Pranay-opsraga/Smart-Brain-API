@@ -22,14 +22,18 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 // ─── Middleware ─────────────────────────────────────────────
+// Manual CORS — handles preflight (OPTIONS) for Express 5 compatibility
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    if (req.method === 'OPTIONS') {
+        return res.sendStatus(204);
+    }
+    next();
+});
 app.use(helmet());                         // Security headers
-app.use(cors({
-  origin: '*',
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-  preflightContinue: false,
-  optionsSuccessStatus: 204
-}));                                       // Cross-origin requests + preflight
+
 app.use(morgan("dev"));                    // Request logging
 app.use(express.json({ limit: "1mb" }));   // JSON body parser with size limit
 
