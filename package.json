@@ -4,7 +4,7 @@
   "description": "Smart Brain API - Backend server",
   "main": "server.js",
   "scripts": {
-    "start": "node --env-file=.env server.js",
+    "start": "node server.js",
     "predev": "lsof -ti:3001 | xargs kill -9 2>/dev/null || true",
     "dev": "node --env-file=.env --watch server.js"
   },
