@@ -24,6 +24,7 @@ const PORT = process.env.PORT || 3001;
 // ─── Middleware ─────────────────────────────────────────────
 app.use(helmet());                         // Security headers
 app.use(cors());                           // Cross-origin requests
+app.options('*', cors());                  // Handle preflight requests
 app.use(morgan("dev"));                    // Request logging
 app.use(express.json({ limit: "1mb" }));   // JSON body parser with size limit
 
